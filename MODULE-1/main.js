@@ -8,7 +8,7 @@ const eventDate = "2025-06-15";
 let availableSeats = 20;
 console.log(`${eventName} on ${eventDate}. Seats available: ${availableSeats}`);
 
-// 3. Conditions & Loops
+// 3. Show valid events
 const events = [
   { name: "Music Fest", date: "2025-07-20", seats: 10 },
   { name: "Old Meetup", date: "2023-05-10", seats: 0 }
@@ -20,11 +20,7 @@ events.forEach(event => {
   }
 });
 
-// 4. Functions & Closures
-function addEvent(event) {
-  events.push(event);
-}
-
+// 4. Functions
 function registerUser(eventName) {
   const event = events.find(e => e.name === eventName);
   try {
@@ -39,15 +35,7 @@ function registerUser(eventName) {
   }
 }
 
-function createCategoryCounter() {
-  let count = 0;
-  return function () {
-    count++;
-    return count;
-  };
-}
-
-// 5. Object Prototypes
+// 5. Object and Prototype
 function Event(name, seats) {
   this.name = name;
   this.seats = seats;
@@ -56,35 +44,30 @@ Event.prototype.checkAvailability = function () {
   return this.seats > 0;
 };
 
-// 6. Array Methods
+// 6. Array Map & Filter
 const musicEvents = events.filter(e => e.name.includes("Music"));
-const displayCards = events.map(e => `${e.name} - ${e.date}`);
+const formatted = events.map(e => `${e.name} - ${e.date}`);
 
 // 7. DOM Manipulation
-const output = document.getElementById("confirmationMsg");
-
 function handleSubmit(event) {
   event.preventDefault();
-  output.textContent = "Thank you for registering!";
+  document.getElementById("confirmationMsg").textContent = "Thank you for registering!";
 }
 
 // 8. Event Handling
 function handleEventChange() {
-  const eventType = document.getElementById("eventType").value;
-  console.log("Selected:", eventType);
+  const type = document.getElementById("eventType").value;
+  console.log("Selected Event Type:", type);
 }
 
 // 9. Async/Await
 async function fetchEvents() {
-  document.body.classList.add("loading");
   try {
     const res = await fetch("https://mockapi.io/events");
     const data = await res.json();
     console.log(data);
   } catch (err) {
-    console.error("Fetch error", err);
-  } finally {
-    document.body.classList.remove("loading");
+    console.error("Fetch failed", err);
   }
 }
 
@@ -92,10 +75,10 @@ async function fetchEvents() {
 const clone = [...events];
 const [{ name: firstEvent }] = events;
 
-// 11. Form Handling
+// 11. Form Validation
 function validatePhone() {
   const phone = document.getElementById("phone").value;
-  if (!/^\d{10}$/.test(phone)) {
+  if (!/^[0-9]{10}$/.test(phone)) {
     alert("Invalid phone number");
   }
 }
@@ -109,27 +92,25 @@ function postData() {
   fetch("https://mockapi.io/register", {
     method: "POST",
     body: JSON.stringify({ user: "John" }),
+    headers: { "Content-Type": "application/json" }
   })
     .then(res => res.json())
     .then(data => alert("Success!"))
     .catch(err => alert("Failed"));
 }
 
-// 13. Debugging
+// 13. Debugging Logs
 console.log("Form loaded");
 document.getElementById("registrationForm").addEventListener("submit", e => {
   console.log("Form submitted");
 });
 
-// 14. jQuery (if used)
-// $('#registerBtn').click(() => alert("Registered"));
-// $('.eventCard').fadeIn();
-
+// 14. Video Handling
 function showVideoReady() {
   document.getElementById("videoMsg").textContent = "Video ready to play!";
 }
 
-// 8. Preferences
+// Preferences and Geolocation
 function clearPreferences() {
   localStorage.clear();
   sessionStorage.clear();
