@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Local Community Event Portal</title>
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="main.js"></script>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#events">Events</a>
+    <a href="#contact">Contact</a>
+    <a href="help.html" target="_blank">Help</a>
+  </nav>
+
+  <!-- Welcome Banner -->
+  <div id="welcomeBanner">Welcome to the Community Portal 
+    <span style="color: red; font-weight: bold;">Limited Time Offer!</span>
+  </div>
+
+  <!-- Main Section -->
+  <main>
+    <section id="home">
+      <h1 class="highlight">Upcoming Events</h1>
+
+      <!-- Event Image Gallery -->
+      <table>
+        <caption>Recent Community Events</caption>
+        <tr>
+          <td><img src="img1.jpg" alt="Music Fest" title="Music Fest" class="event-img"></td>
+          <td><img src="img2.jpg" alt="Art Show" title="Art Show" class="event-img"></td>
+          <td><img src="img3.jpg" alt="Food Carnival" title="Food Carnival" class="event-img"></td>
+        </tr>
+        <tr>
+          <td><img src="img4.jpg" alt="Tech Meetup" title="Tech Meetup" class="event-img"></td>
+          <td><img src="img5.jpg" alt="Book Fair" title="Book Fair" class="event-img"></td>
+          <td><img src="img6.jpg" alt="Dance Night" title="Dance Night" class="event-img"></td>
+        </tr>
+      </table>
+    </section>
+
+    <!-- Event Registration Form -->
+    <section id="events">
+      <h2>Register for an Event</h2>
+      <form id="registrationForm">
+        <input type="text" name="name" placeholder="Your Name" required autofocus>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <input type="date" name="date" required>
+        <select name="eventType" id="eventType" onchange="handleEventChange()">
+          <option value="music">Music</option>
+          <option value="tech">Tech</option>
+          <option value="art">Art</option>
+        </select>
+        <input type="text" name="phone" id="phone" placeholder="Phone Number" onblur="validatePhone()">
+        <textarea id="feedback" placeholder="Any special requests..." onkeydown="countChars(event)"></textarea>
+        <output id="confirmationMsg"></output>
+        <button type="submit" onclick="handleSubmit(event)">Submit</button>
+      </form>
+    </section>
+
+    <!-- Video Promo -->
+    <section>
+      <video src="promo.mp4" controls oncanplay="showVideoReady()"></video>
+      <p id="videoMsg"></p>
+    </section>
+
+    <!-- Geolocation -->
+    <section>
+      <button onclick="findLocation()">Find Nearby Events</button>
+      <p id="locationDisplay"></p>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer id="contact">
+    <p>Contact us at <a href="mailto:community@events.org">community@events.org</a></p>
+    <button onclick="clearPreferences()">Clear Preferences</button>
+  </footer>
+
+</body>
+</html>

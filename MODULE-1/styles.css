@@ -1,0 +1,104 @@
+/* Header styles */
+body {
+  background: #f4f4f4;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Welcome Banner */
+#welcomeBanner {
+  background-color: lightblue;
+  padding: 10px;
+  text-align: center;
+}
+
+/* Resetting default spacing */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* Navigation */
+nav {
+  background-color: #007BFF;
+  padding: 1em;
+  text-align: center;
+}
+
+nav a {
+  color: white;
+  margin: 0 1em;
+  text-decoration: none;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+/* Style for main CTA button */
+button {
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+
+/* Image Styles */
+.event-img {
+  border: 2px solid #ccc;
+  width: 150px;
+  height: auto;
+}
+
+/* Form */
+form {
+  padding: 20px;
+}
+
+input, select, textarea {
+  margin: 10px 0;
+  width: 100%;
+  padding: 8px;
+}
+
+textarea {
+  height: 100px;
+}
+
+/* Highlight class */
+.highlight {
+  background-color: yellow;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  nav a {
+    display: block;
+    margin: 10px 0;
+  }
+
+  .event-img {
+    width: 100%;
+  }
+}
+
+/* Columns for news */
+.news {
+  column-count: 2;
+  column-gap: 30px;
+  column-rule: 1px solid gray;
+}
+
+/* Table Styling */
+table, th, td {
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+  text-align: center;
+  padding: 10px;
+}
+
+tr:nth-child(even) {
+  background-color: #eee;
+}
